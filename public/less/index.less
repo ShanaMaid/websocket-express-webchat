@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'microsoft yahei';
+    font-weight: bold;
+}
+
+#chat{
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    min-height:200px ;
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+}
+
+#message{
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    background-image: url("/static/img/bg.jpg");
+    background-size: cover;
+}
+
+#input{
+    width: 100%;
+    height: 15%;
+}
+
+#text{
+    resize: none;
+    width: 80%;
+    height: 100%;
+    float: left;
+}
+
+#send{
+    height: 70%;
+    width: 20%;
+    text-align: center;
+    float: right;
+}
+
+#item{
+    padding: 0 20px;
+    margin-bottom:5px;
+    word-wrap: break-word;
+    word-wrap: normal;
+    word-break:break-all;
+    word-wrap:break-word;
+}
+
+#name{
+    height: 30%;
+    width: 20%;
+}
+
+#person_list{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+    background-color: blue;
+    padding: 20px;
+    display: none;
+    background-image: url("/static/img/pl.jpg");
+    background-size: cover;
+}
+
+#retract{
+    text-align: center;
+}
+
+#spread{
+    #retract;
+    height: 5%;
+}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 15px;
+    height: 16px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px pink;
+    background-color: pink;
+}
+

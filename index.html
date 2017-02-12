@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>一个简单的Web聊天室</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/animate.css/animate.min.css">
+</head>
+<body ng-app="webchat" ng-controller="myCtrl">
+	<div id="chat" >
+		<div id="spread" ng-click="spread()">展开在线用户列表</div>
+		<div id="message">
+			<p class="animated fadeIn" ng-repeat="x in data" id="item">
+                <span ng-bind="x.user"></span>  <span ng-bind="x.time"></span> <br/>
+				<span ng-bind="x.data"></span><br/>
+			</p>
+		</div>
+		<div id="input">
+			<textarea id="text" type="text" maxlength="100" ng-model="content" ng-keydown="enter($event)" ng-disabled="name.length==0?true:false"></textarea>
+			<input type="text" ng-model="name" placeholder="名字" id="name" ng-disabled="flag">
+			<button id="send"  ng-click="sendMsg()" ng-disabled="content.length==0?true:false">发送消息</button>
+		</div>
+		<div id="person_list" class="animated">
+			当前在线人数:{{personlist.length}}<br/>
+			在线人列表:<br/>
+			<span ng-repeat="x in personlist">{{x}}<br/></span>
+			<div id="retract" ng-click="retract()">收起</div>
+		</div>
+	</div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/angular/angular.min.js"></script>
+<script src="static/js/index.js"></script>
+</html>
