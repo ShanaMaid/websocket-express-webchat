@@ -1,6 +1,9 @@
 # websocket-express-webchat
 基于websocket的一个简单的聊天室
-express+socket.io+animate.css
+express+socket.io+animate.css+angular
+
+## Warning!
+请使用高版本nodejs，本项目包含部分ES6语法
 
 ## Demo
 [点我进入在线版](http://www.shanamaid.top:7777/)
@@ -66,8 +69,8 @@ node app.js
 - [x] 服务器端信息备份
 
 ## 版本更新记录
-v1.0.1 服务器端信息备份
-v1.0.0 即时聊天 
+* v1.0.1 服务器端信息备份
+* v1.0.0 即时聊天 
 
 ## License
 see [MIT LICENSE](./LICENSE) for details
