@@ -1,3 +1,4 @@
+"use strict";
 const msg = document.getElementById('message');
 var app = angular.module('webchat', []);
 
@@ -19,10 +20,10 @@ app.controller('myCtrl', function($scope) {
     });
 
     socket.on('history', (data) => {
-        for(var x in data){
+        for(let x in data){
             ($scope.data).push(data[x]);
         }
-        ($scope.data).push({data:'----------以上是历史消息-----------'});
+        ($scope.data).push({content:'----------以上是历史消息-----------'});
         $scope.$apply();
         msg.scrollTop = msg.scrollHeight;
     });
@@ -53,11 +54,11 @@ app.controller('myCtrl', function($scope) {
     $scope.retract = function () {
         pl.removeClass('flipInX');
         pl.addClass('flipOutX');
-    }
+    };
 
     $scope.spread = function () {
         pl.removeClass('flipOutX');
         pl.css({display:"block"});
         pl.addClass('flipInX');
-    }
+    };
 });

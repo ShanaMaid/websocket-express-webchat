@@ -1,0 +1,6 @@
+{
+  "history_num":20,
+  "sever_port":80,
+  "backup":true,
+  "backup_filename":"./backup/example.json"
+}
