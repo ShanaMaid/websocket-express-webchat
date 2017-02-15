@@ -11,6 +11,7 @@
   "dependencies": {
     "angular": "^1.6.2",
     "animate.css": "^3.5.2",
+    "async-lock": "^0.3.9",
     "bootstrap": "^3.3.7",
     "express": "^4.14.1",
     "less": "^2.7.2",

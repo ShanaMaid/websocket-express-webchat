@@ -3,6 +3,7 @@ var express = require('express');
 var socket = require('socket.io');
 var fs = require('fs');
 
+
 var config=JSON.parse(fs.readFileSync( 'config.json')); //读取配置文件
 
 var person = [];//记录在线情况
@@ -20,15 +21,14 @@ app.use(express.static('node_modules'));
 app.use('/static',express.static('public'));
 
 app.get('/',  (req, res)  => {
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection',  (socket) => {
 	var user = '';
-	var id;
 	var backup_file = fs.readFileSync(backup_filename);
 	var backup_msg= backup_file!='' ?  JSON.parse(backup_file) : [];
-	var history = backup_msg.length<=history_num ? backup_msg : backup_msg.slice(backup_msg.length-history_num,history_num);
+	var history = backup_msg.length<=history_num ? backup_msg : backup_msg.slice(backup_msg.length-history_num,backup_msg.length+history_num);
 
 	socket.emit('history',history); //发送服务器记录的历史消息
 	io.sockets.emit('updatePerson', person);
@@ -51,17 +51,20 @@ io.on('connection',  (socket) => {
 	socket.on('setUserName',(data) => {
 		user = data;
 		person.push(user);
-		id = person.length - 1;//数组下标
 		io.sockets.emit('updatePerson',person);
 		io.sockets.emit('news',{content:user+'进入房间',time:Now(),name:'系统消息'});
 	});
 
 	socket.on('disconnect',  (socket) => {
-		if(user!='') {
+		    if(user!='') {
+			person.forEach((value,index)=>{
+				if (value===user) {
+					person.splice(index,1);
+				}
+			});
 			io.sockets.emit('news', {content: user + '离开房间', time: Now(), name: '系统消息'});
-			person.splice(id,1);
-		}
-		io.sockets.emit('updatePerson', person);
+			io.sockets.emit('updatePerson', person);
+			}
 	});
 
 });
