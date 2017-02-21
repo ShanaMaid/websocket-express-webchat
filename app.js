@@ -56,15 +56,15 @@ io.on('connection',  (socket) => {
 	});
 
 	socket.on('disconnect',  (socket) => {
-		    if(user!='') {
-			person.forEach((value,index)=>{
-				if (value===user) {
-					person.splice(index,1);
-				}
-			});
-			io.sockets.emit('news', {content: user + '离开房间', time: Now(), name: '系统消息'});
-			io.sockets.emit('updatePerson', person);
+	    	if (user!='') {
+		person.forEach((value,index)=>{
+			if (value===user) {
+				person.splice(index,1);
 			}
+		});
+		io.sockets.emit('news', {content: user + '离开房间', time: Now(), name: '系统消息'});
+		io.sockets.emit('updatePerson', person);
+		}
 	});
 
 });
@@ -80,15 +80,16 @@ function backupMsg(filename,obj) {
 	msg.push(obj);
 	var str = '[\n'
 	msg.forEach((value,index) =>{
-		if (index!==0){
+		if (index!==0) {
 			str+=',\n';
 		}
-		str += '  {\n    "name":"'+value.name+'",\n    "time":"'+value.time+'",\n    "content":"'+value.content+'"\n  }'
+		str += '  {\n    "name":"'+value.name+'",\n    "time":"'+value.time+'",\n    "content":"'+value.content+'"\n  }';
 	} );
 	str += '\n]';
 	fs.writeFile(filename, str, (err) => {
-		if(err)
+		if (err) {
 			console.log("fail write :" + arr +  "   "+Date() + "\n error:"+err);
+		}
 	});
 }
 
