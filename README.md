@@ -6,7 +6,7 @@ express+socket.io+animate.css+angular
 请使用高版本nodejs，本项目包含部分ES6语法
 
 ## Demo
-[点我进入在线版](http://webchat.shanamaid.top/)
+[点我进入在线版](http://webchat.shanalab.top/)
 
 ## 使用方法
 * Step 1 下载本项目
