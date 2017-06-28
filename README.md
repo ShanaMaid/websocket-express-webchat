@@ -6,7 +6,7 @@ express+socket.io+animate.css+angular
 请使用高版本nodejs，本项目包含部分ES6语法
 
 ## Demo
-[点我进入在线版](http://119.29.159.156:7777/)
+由于域名备案原因，不再提供在线版，请clone到本地使用
 
 ## 使用方法
 * Step 1 下载本项目
